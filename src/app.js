@@ -63,11 +63,10 @@ app.delete("/repositories/:id", (request, response) => {
 });
 
 app.post("/repositories/:id/like", (request, response) => {
-  const {likes} = request.body
   const {id} = request.params
 
   const indexRepository = repositories.findIndex(repository => repository.id == id)
-  repositories[indexRepository].likes += likes
+  repositories[indexRepository].likes++
 
   return response.json(repositories[indexRepository])
    
